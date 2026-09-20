@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#040609">
+<meta name="description" content="er4ꪖn">
+<title>er4ꪖn</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
+:root{--bg:#040609;--card:rgba(13,18,27,.64);--card2:rgba(8,12,19,.8);--blue:#a9ddff;--white:#f7fbff;--muted:#8491a2;--line:rgba(169,221,255,.13)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;overflow-x:hidden;color:var(--white);font-family:"Vazirmatn",Tahoma,Arial,sans-serif;background:radial-gradient(900px 500px at 50% -10%,rgba(114,199,255,.13),transparent 65%),radial-gradient(700px 500px at 100% 100%,rgba(114,199,255,.07),transparent 65%),var(--bg);display:grid;place-items:center}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.45;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black 0%,transparent 100%)}
+.noise{position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}
+.cursor-glow{position:fixed;width:300px;height:300px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(114,199,255,.09),transparent 68%);transform:translate(-50%,-50%);z-index:0}
+.wrap{position:relative;z-index:1;width:min(880px,92%);padding:42px 0}
+.hero{text-align:center;margin-bottom:30px;animation:appear .9s cubic-bezier(.2,.8,.2,1) both}
+.mark{width:70px;height:70px;margin:0 auto 22px;display:grid;place-items:center;border-radius:23px;color:var(--blue);font-size:25px;background:linear-gradient(145deg,rgba(169,221,255,.11),rgba(114,199,255,.035));border:1px solid rgba(169,221,255,.18);box-shadow:0 0 50px rgba(114,199,255,.08),inset 0 1px rgba(255,255,255,.08)}
+.brand{margin:0;direction:ltr;font-size:clamp(48px,10vw,82px);line-height:1;letter-spacing:-4px;font-weight:800;color:var(--white)}
+.brand span{color:var(--blue);text-shadow:0 0 35px rgba(114,199,255,.24)}
+.subtitle{margin:16px 0 0;color:var(--muted);font-size:13px;letter-spacing:2px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{position:relative;min-height:240px;padding:29px;border:1px solid var(--line);border-radius:30px;overflow:hidden;background:linear-gradient(145deg,var(--card),var(--card2));backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 28px 80px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.035);transition:.35s;animation:appear .9s cubic-bezier(.2,.8,.2,1) .08s both}
+.card:hover{transform:translateY(-6px);border-color:rgba(169,221,255,.28);box-shadow:0 34px 90px rgba(0,0,0,.48),0 0 50px rgba(114,199,255,.05)}
+.topline{display:flex;align-items:center;justify-content:space-between;direction:ltr;margin-bottom:35px}
+.icon{width:50px;height:50px;display:grid;place-items:center;border-radius:16px;color:var(--blue);font-size:19px;background:rgba(169,221,255,.065);border:1px solid rgba(169,221,255,.12)}
+.number{color:#465365;font-size:12px;letter-spacing:2px}
+.label{color:var(--blue);font-size:11px;font-weight:700;letter-spacing:2.5px;margin-bottom:10px}
+h2{margin:0 0 25px;font-size:25px;font-weight:700}
+.btn{width:100%;min-height:55px;display:flex;align-items:center;justify-content:center;gap:11px;direction:ltr;text-decoration:none;color:#071019;background:linear-gradient(135deg,#a9ddff,#d0edff);border-radius:16px;font-size:14px;font-weight:800;box-shadow:0 12px 35px rgba(114,199,255,.11);transition:.25s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:0 16px 40px rgba(114,199,255,.2)}
+.music{grid-column:1/-1;min-height:190px;padding:27px}
+.music-head{display:flex;align-items:center;gap:20px;margin-bottom:25px}
+.disc{width:74px;height:74px;flex:0 0 74px;border-radius:50%;background:radial-gradient(circle at center,#071019 0 11%,var(--blue) 12% 16%,#101822 17% 38%,var(--blue) 39% 42%,#080c12 43% 100%);box-shadow:0 0 28px rgba(114,199,255,.12),inset 0 0 0 1px rgba(255,255,255,.1);animation:spin 8s linear infinite}
+.music-meta{min-width:0}.music .label{margin-bottom:4px}.music h2{margin:0 0 4px;font-size:23px}.artist{color:var(--muted);font-size:13px}
+.music-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.music-actions .btn{min-height:50px}
+.soundcloud{background:linear-gradient(135deg,#b7e4ff,#e1f4ff)}
+.status{margin-top:13px;text-align:center;color:#526071;font-size:11px;letter-spacing:.5px}
+footer{margin-top:25px;text-align:center;color:#4e5a69;font-size:11px;letter-spacing:1px}
+@keyframes appear{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:680px){.wrap{width:min(92%,440px);padding:30px 0}.grid{grid-template-columns:1fr}.music{grid-column:auto}.music-head{gap:15px}.disc{width:62px;height:62px;flex-basis:62px}.music-actions{grid-template-columns:1fr}.music h2{font-size:20px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="noise"></div><div class="cursor-glow" id="glow"></div>
+<main class="wrap">
+<header class="hero">
+<div class="mark">✦</div>
+<h1 class="brand">er4<span>ꪖ</span>n</h1>
+<p class="subtitle">PERSONAL SPACE</p>
+</header>
+
+<section class="grid">
+<article class="card">
+<div class="topline"><div class="icon">↗</div><div class="number">01</div></div>
+<div class="label">CHANNEL</div><h2>er4ꪖn</h2>
+<a class="btn" href="https://t.me/sxsy9" target="_blank" rel="noopener noreferrer">Open Channel <span>↗</span></a>
+</article>
+
+<article class="card">
+<div class="topline"><div class="icon">⌁</div><div class="number">02</div></div>
+<div class="label">PV</div><h2>Profile</h2>
+<a class="btn" href="https://t.me/er4anx" target="_blank" rel="noopener noreferrer">Open Profile <span>↗</span></a>
+</article>
+
+<article class="card music">
+<div class="music-head">
+<div class="disc"></div>
+<div class="music-meta">
+<div class="label">NOW PLAYING</div>
+<h2 id="song">Jadval O Roya</h2>
+<div class="artist" id="artist">Hichkas</div>
+</div>
+</div>
+<div class="music-actions">
+<a class="btn" id="spotify" target="_blank" rel="noopener noreferrer">Spotify <span>↗</span></a>
+<a class="btn soundcloud" id="soundcloud" target="_blank" rel="noopener noreferrer">SoundCloud <span>↗</span></a>
+</div>
+<div class="status">A different track appears each time you visit.</div>
+</article>
+</section>
+<footer>er4ꪖn · 2026</footer>
+</main>
+
+<script>
+const songs=[
+ {title:"Jadval O Roya",artist:"Hichkas",spotify:"https://open.spotify.com/track/5pq9GKGvr2Kp5ZjNiKgRvA6",soundcloud:"https://soundcloud.com/user-374397570/jadval-o-roya"},
+ {title:"Sarpaam",artist:"Shayea · Ho3ein · Canis",spotify:"https://open.spotify.com/track/2EwO8bc0FOY6lNqDaZuvid",soundcloud:"https://soundcloud.com/search?q=Sarpaam%20Shayea"},
+ {title:"3 AM",artist:"Sajad Shahi",spotify:"https://open.spotify.com/search/3%20AM%20Sajad%20Shahi",soundcloud:"https://soundcloud.com/persianslowed/3-am-sajad-shahi-slowed-reverb"}
+];
+const song=songs[Math.floor(Math.random()*songs.length)];
+document.getElementById("song").textContent=song.title;
+document.getElementById("artist").textContent=song.artist;
+document.getElementById("spotify").href=song.spotify;
+document.getElementById("soundcloud").href=song.soundcloud;
+
+const glow=document.getElementById("glow");
+window.addEventListener("pointermove",e=>{glow.style.left=e.clientX+"px";glow.style.top=e.clientY+"px";});
+</script>
+</body>
+</html>
